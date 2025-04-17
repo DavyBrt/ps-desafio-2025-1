@@ -8,33 +8,33 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsBook from './form-fields-book'
-import { updateBook } from '@/actions/book'
+import FormFieldsVehicle from './form-fields-vehicle'
+import { updateVehicle } from '@/actions/vehicle'
 import { filterFormData } from '@/services/filter-form-data'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
-import { bookType } from '@/types/book'
+import { vehicleType } from '@/types/vehicle'
 import { ResponseErrorType, api } from '@/services/api'
 
-interface DialogUpdateBookProps {
+interface DialogUpdateVehicleProps {
   id: string
   children: React.ReactNode
 }
 
-export function DialogUpdateBook({ id, children }: DialogUpdateBookProps) {
-  const [book, setBook] = useState<bookType | null>(null)
+export function DialogUpdateVehicle({ id, children }: DialogUpdateVehicleProps) {
+  const [vehicle, setVehicle] = useState<vehicleType | null>(null)
   const [open, setOpen] = useState<boolean>()
   const [error, setError] = useState<ResponseErrorType | null>(null)
   const { toast } = useToast()
 
   useEffect(() => {
     const requestData = async () => {
-      const { response } = await api<bookType>('GET', `/books/${id}`)
+      const { response } = await api<vehicleType>('GET', `/vehicles/${id}`)
 
       if (response) {
-        setBook(response)
+        setVehicle(response)
       } else {
-        setBook(null)
+        setVehicle(null)
         toast({
           title: 'Livro  não encontrado!',
         })
@@ -45,7 +45,7 @@ export function DialogUpdateBook({ id, children }: DialogUpdateBookProps) {
     requestData()
 
     return () => {
-      setBook(null)
+      setVehicle(null)
       setError(null)
     }
   }, [id, open, toast])
@@ -80,7 +80,7 @@ export function DialogUpdateBook({ id, children }: DialogUpdateBookProps) {
           </DialogDescription>
         </DialogHeader>
         <form action={submit}>
-          <FormFieldsBook error={error} book={book} />
+          <FormFieldsVehicle error={error} vehicle={vehicle} />
         </form>
       </DialogContent>
     </Dialog>

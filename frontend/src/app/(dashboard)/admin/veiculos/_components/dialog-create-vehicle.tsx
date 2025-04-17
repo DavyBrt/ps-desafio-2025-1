@@ -8,18 +8,18 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsBook from './form-fields-book'
-import { createBook } from '@/actions/book'
+import FormFieldsVehicle from './form-fields-vehicle'
+import { createVehicle } from '@/actions/vehicle'
 import { filterFormData } from '@/services/filter-form-data'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
 import { ResponseErrorType } from '@/services/api'
 
-interface DialogCreateBookProps {
+interface DialogCreateVehicleProps {
   children: React.ReactNode
 }
 
-export function DialogCreateBook({ children }: DialogCreateBookProps) {
+export function DialogCreateVehicle({ children }: DialogCreateVehicleProps) {
   const [open, setOpen] = useState<boolean>()
   const [error, setError] = useState<ResponseErrorType | null>(null)
   const { toast } = useToast()
@@ -33,7 +33,7 @@ export function DialogCreateBook({ children }: DialogCreateBookProps) {
   const submit = async (form: FormData) => {
     const newForm = await filterFormData(form)
 
-    const { error } = await JSON.parse(await createBook(newForm))
+    const { error } = await JSON.parse(await createVehicle(newForm))
 
     if (error) {
       setError(error)
@@ -60,7 +60,7 @@ export function DialogCreateBook({ children }: DialogCreateBookProps) {
           </DialogDescription>
         </DialogHeader>
         <form action={submit}>
-          <FormFieldsBook error={error} />
+          <FormFieldsVehicle error={error} />
         </form>
       </DialogContent>
     </Dialog>

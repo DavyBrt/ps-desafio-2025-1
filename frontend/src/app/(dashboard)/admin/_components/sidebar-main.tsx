@@ -35,9 +35,9 @@ export function SidebarMain() {
           <LuUsers />
           <SidebarNavLinkLabel>Usuários</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/livros">
+        <SidebarNavLink href="/admin/veiculos">
           <LuBookOpen />
-          <SidebarNavLinkLabel>Livros</SidebarNavLinkLabel>
+          <SidebarNavLinkLabel>Veiculos</SidebarNavLinkLabel>
         </SidebarNavLink>
         <SidebarNavLink href="/admin/categorias">
           <LuLayers />

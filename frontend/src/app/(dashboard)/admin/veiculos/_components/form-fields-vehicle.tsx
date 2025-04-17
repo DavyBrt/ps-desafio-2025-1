@@ -12,28 +12,28 @@ import { Input } from '@/components/input'
 import { Label } from '@/components/label'
 import { cn } from '@/lib/utils'
 import { ResponseErrorType } from '@/services/api'
-import { bookType } from '@/types/book'
+import { vehicleType } from '@/types/vehicle'
 import { useState } from 'react'
 import { useFormStatus } from 'react-dom'
 
-interface FormFieldsBookProps {
-  book?: bookType | null
+interface FormFieldsVehicleProps {
+  vehicle?: vehicleType | null
   readOnly?: boolean
   error?: ResponseErrorType | null
 }
 
-export default function FormFieldsBook({
-  book,
+export default function FormFieldsVehicle({
+  vehicle,
   readOnly,
   error,
-}: FormFieldsBookProps) {
+}: FormFieldsVehicleProps) {
   const { pending } = useFormStatus()
   const [updateImage, setUpdateImage] = useState<string | undefined>()
 
   return (
     <>
       <FormFieldsGroup>
-        {book && <Input defaultValue={book.id} type="text" name="id" hidden />}
+        {vehicle && <Input defaultValue={vehicle.id} type="text" name="id" hidden />}
         {/* inserir campos do formulário */}
       </FormFieldsGroup>
       <DialogFooter className={cn({ hidden: readOnly })}>

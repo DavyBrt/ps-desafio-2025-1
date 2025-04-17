@@ -8,23 +8,23 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsBook from './form-fields-book'
-import { bookType } from '@/types/book'
+import FormFieldsVehicle from './form-fields-vehicle'
+import { vehicleType } from '@/types/vehicle'
 import { api } from '@/services/api'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
 
-interface DialogInformationBookProps {
+interface DialogInformationVehicleProps {
   id: string
   children: React.ReactNode
   isInformation?: boolean
 }
 
-export function DialogInformationBook({
+export function DialogInformationVehicle({
   id,
   children,
-}: DialogInformationBookProps) {
-  const [book, setBook] = useState<bookType | null>(null)
+}: DialogInformationVehicleProps) {
+  const [vehicle, setVehicle] = useState<vehicleType | null>(null)
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
@@ -33,11 +33,11 @@ export function DialogInformationBook({
       const { response } = null // requisicao para api
 
       if (response) {
-        setBook(response)
+        setVehicle(response)
       } else {
-        setBook(null)
+        setVehicle(null)
         toast({
-          title: 'Livro não encontrado!',
+          title: 'Veículo não encontrado!',
         })
         setOpen(false)
       }
@@ -45,7 +45,7 @@ export function DialogInformationBook({
 
     requestData()
 
-    return () => setBook(null)
+    return () => setVehicle(null)
   }, [id, open, toast])
 
   return (
@@ -58,7 +58,7 @@ export function DialogInformationBook({
             Visualize as informações detalhadas do livro abaixo.
           </DialogDescription>
         </DialogHeader>
-        <FormFieldsBook book={book} readOnly />
+        <FormFieldsVehicle vehicle={vehicle} readOnly />
       </DialogContent>
     </Dialog>
   )

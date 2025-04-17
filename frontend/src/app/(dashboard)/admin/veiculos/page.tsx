@@ -4,8 +4,8 @@ import {
   DashboardHeaderTitle,
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
-import { LuBookOpen } from 'react-icons/lu'
-import ListBooks from './_components/list-books'
+import { FaCarAlt } from "react-icons/fa";
+import ListVehicles from './_components/list-vehicles'
 import { Suspense } from 'react'
 
 export default async function Page() {
@@ -13,16 +13,16 @@ export default async function Page() {
     <>
       <DashboardHeader>
         <DashboardHeaderTitle>
-          <LuBookOpen />
-          Livros
+        <FaCarAlt />
+          Veículos
         </DashboardHeaderTitle>
         <DashboardHeaderDescription>
-          Cadastre, edite, visualize e exclua livros.
+          Cadastre, edite, visualize e exclua veículos.
         </DashboardHeaderDescription>
       </DashboardHeader>
       <DashboardMain>
         <Suspense>
-          <ListBooks />
+          <ListVehicles />
         </Suspense>
       </DashboardMain>
     </>

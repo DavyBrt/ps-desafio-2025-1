@@ -10,15 +10,15 @@ import {
   TableRow,
 } from '@/components/dashboard/table'
 import { api } from '@/services/api'
-import { bookType } from '@/types/book'
+import { vehicleType } from '@/types/vehicle'
 import { Button } from '@/components/button'
 import { LuInfo, LuPen, LuPlusCircle, LuTrash } from 'react-icons/lu'
-import { DialogUpdateBook } from './dialog-update-book'
-import { DialogBookDelete } from './dialog-delete-book'
-import { DialogInformationBook } from './dialog-information-book'
-import { DialogCreateBook } from './dialog-create-book'
+import { DialogUpdateVehicle } from './dialog-update-vehicle'
+import { DialogVehicleDelete } from './dialog-delete-vehicle'
+import { DialogInformationVehicle } from './dialog-information-vehicle'
+import { DialogCreateVehicle } from './dialog-create-vehicle'
 
-export default async function ListBooks() {
+export default async function ListVehicles() {
   const { response } = null // requisicao para api
 
   if (!response) {
@@ -29,17 +29,17 @@ export default async function ListBooks() {
     )
   }
 
-  const books: bookType[] = response
+  const vehicles: vehicleType[] = response
 
   return (
     <>
       <DashboardContainer className="flex h-min justify-between space-x-0 gap-y-2.5 max-sm:flex-col">
-        <DialogCreateBook>
+        <DialogCreateVehicle>
           <Button size="sm">
             <LuPlusCircle />
             Novo livro
           </Button>
-        </DialogCreateBook>
+        </DialogCreateVehicle>
       </DashboardContainer>
       <DashboardContainer>
         <Table>
@@ -53,35 +53,35 @@ export default async function ListBooks() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {books?.map((book: bookType) => (
-              <TableRow key={book.id}>
+            {vehicles?.map((vehicle: vehicleType) => (
+              <TableRow key={vehicle.id}>
                 <TableCell>
-                  <TabbleCellImage src={book.image} />
+                  <TabbleCellImage src={vehicle.image} />
                 </TableCell>
-                <TableCell>{book.title}</TableCell>
-                <TableCell>{book.amount}</TableCell>
-                <TableCell>{book.category.name}</TableCell>
+                <TableCell>{vehicle.title}</TableCell>
+                <TableCell>{vehicle.amount}</TableCell>
+                <TableCell>{vehicle.category.name}</TableCell>
                 <TableCell className="flex justify-end gap-2">
-                  <DialogInformationBook id={book.id}>
+                  <DialogInformationVehicle id={vehicle.id}>
                     <Button variant="default-inverse" size="icon">
                       <LuInfo />
                     </Button>
-                  </DialogInformationBook>
-                  <DialogUpdateBook id={book.id}>
+                  </DialogInformationVehicle>
+                  <DialogUpdateVehicle id={vehicle.id}>
                     <Button variant="secondary-inverse" size="icon">
                       <LuPen />
                     </Button>
-                  </DialogUpdateBook>
-                  <DialogBookDelete id={book.id}>
+                  </DialogUpdateVehicle>
+                  <DialogVehicleDelete id={vehicle.id}>
                     <Button variant="destructive-inverse" size="icon">
                       <LuTrash />
                     </Button>
-                  </DialogBookDelete>
+                  </DialogVehicleDelete>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
-          {!books.length && (
+          {!vehicles.length && (
             <TableCaption>Nenhum livro encontrado.</TableCaption>
           )}
         </Table>
