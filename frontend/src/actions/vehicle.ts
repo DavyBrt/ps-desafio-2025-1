@@ -36,3 +36,12 @@ export async function destroyVehicle(id: string) {
 
     return JSON.stringify(res)
 }
+export async function buyVehicle(id: string) {
+    const res = await api('POST', `/vehicles/${id}/buy`)
+
+    if (!res.error) {
+        revalidatePath('#')
+    }
+
+    return JSON.stringify(res)
+}

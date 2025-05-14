@@ -50,6 +50,29 @@
     margin: 1vh 0;
 }
 
+.buy_button {
+    margin: 1rem auto;
+    padding: 0.6rem 1.2rem;
+    background-color: #7f1d1d;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+.buy_button:hover {
+    background-color: #991b1b;
+}
+
+.buy_button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
 @media screen and (max-width: 660px) {
     .card {
         flex-direction: row;

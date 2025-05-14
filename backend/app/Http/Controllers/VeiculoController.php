@@ -115,13 +115,13 @@ class VeiculoController extends Controller
     {
 
     $veiculo = $this->veiculo->with('category')->findOrFail($id);
-    if ($veiculo->stock <= 0) {
+    if ($veiculo->storage <= 0) {
         return response()->json([
             'error' => 'Estoque esgotado',
-            'stock' => 0
+            'storage' => 0
         ], Response::HTTP_BAD_REQUEST);
     }
-    $veiculo->stock -= 1;
+    $veiculo->storage -= 1;
     $veiculo->save();
     return response()->json($veiculo, Response::HTTP_OK);
     }
