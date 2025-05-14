@@ -13,7 +13,7 @@ export default async function Page() {
     <>
       <DashboardHeader>
         <DashboardHeaderTitle>
-        <FaCarAlt />
+        <FaCarAlt/>
           Veículos
         </DashboardHeaderTitle>
         <DashboardHeaderDescription>
@@ -22,7 +22,7 @@ export default async function Page() {
       </DashboardHeader>
       <DashboardMain>
         <Suspense>
-          <ListVehicles />
+          <ListVehicles/>
         </Suspense>
       </DashboardMain>
     </>

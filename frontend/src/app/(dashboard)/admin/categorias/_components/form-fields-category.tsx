@@ -1,4 +1,4 @@
-'use client'
+
 
 import { Button } from '@/components/button'
 import {
@@ -34,7 +34,20 @@ export default function FormFieldsCategory({
         {category && (
           <Input defaultValue={category.id} type="text" name="id" hidden />
         )}
-        {/* inserir campos do formulário */}
+        <FormField>
+          <Label htmlFor='name' required={!category}>
+            Category
+          </Label>
+          <Input
+          name='name'
+          id='name'
+          placeholder='Insira a categoria'
+          defaultValue={category?.name}
+          disabled={pending}
+          readOnly={readOnly}
+          error={error?.errors?.name}
+          />
+        </FormField>
       </FormFieldsGroup>
       <DialogFooter className={cn({ hidden: readOnly })}>
         <Button type="submit" pending={pending}>

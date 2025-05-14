@@ -19,7 +19,7 @@ interface DialogCreateVehicleProps {
   children: React.ReactNode
 }
 
-export function DialogVehicleDelete({ id, children }: DialogCreateVehicleProps) {
+export function DialogVehicleDelete({ id, children, }: DialogCreateVehicleProps) {
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
@@ -28,11 +28,11 @@ export function DialogVehicleDelete({ id, children }: DialogCreateVehicleProps) 
 
     if (error) {
       toast({
-        title: 'Não foi possível excluir o livro!',
+        title: 'Não foi possível excluir o veículo!',
       })
     } else {
       toast({
-        title: 'Livro deletado com sucesso!',
+        title: 'Veículo deletado com sucesso!',
       })
     }
 
@@ -44,10 +44,10 @@ export function DialogVehicleDelete({ id, children }: DialogCreateVehicleProps) 
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Confirmar exclusão de livro</DialogTitle>
+          <DialogTitle>Confirmar exclusão do veículo</DialogTitle>
           <DialogDescription>
-            Tem certeza de que deseja excluir este livro? Esta ação é
-            irreversível e removerá permanentemente o livro do sistema. Deseja
+            Tem certeza de que deseja excluir este veículo? Esta ação é
+            irreversível e removerá permanentemente o veículo do sistema. Deseja
             continuar com a exclusão?
           </DialogDescription>
         </DialogHeader>

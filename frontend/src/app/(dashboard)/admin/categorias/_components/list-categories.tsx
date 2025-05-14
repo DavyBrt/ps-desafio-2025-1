@@ -1,3 +1,4 @@
+
 import { DashboardContainer } from '@/components/dashboard/dashboard-items'
 import {
   Table,
@@ -9,16 +10,20 @@ import {
   TableRow,
 } from '@/components/dashboard/table'
 
+import { CiCirclePlus } from "react-icons/ci";
+
+
 import { categoryType } from '@/types/category'
 import { Button } from '@/components/button'
-import { LuInfo, LuPen, LuPlusCircle, LuTrash } from 'react-icons/lu'
+import { LuInfo, LuPen, LuCircle, LuTrash } from 'react-icons/lu'
 import { DialogUpdateCategory } from './dialog-update-category'
 import { DialogCategoryDelete } from './dialog-delete-category'
 import { DialogInformationCategory } from './dialog-information-category'
 import { DialogCreateCategory } from './dialog-create-category'
+import { api, ResponseErrorType } from '@/services/api'
 
-export default async function ListCategory() {
-  const { response } = null // requisicao para api
+export default async function ListCategories() {
+  const { response } = await api<categoryType[]>('GET', `/categories`)
 
   if (!response) {
     return (
@@ -35,7 +40,7 @@ export default async function ListCategory() {
       <DashboardContainer className="flex h-min justify-between space-x-0 gap-y-2.5 max-sm:flex-col">
         <DialogCreateCategory>
           <Button size="sm">
-            <LuPlusCircle />
+            <CiCirclePlus />
             Nova categoria
           </Button>
         </DialogCreateCategory>
@@ -49,8 +54,8 @@ export default async function ListCategory() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {categories?.map((category: categoryType) => (
-              <TableRow key={category.id}>
+            {categories?.map((category: categoryType, index: number) => (
+              <TableRow key={index}>
                 <TableCell>{category.name}</TableCell>
                 <TableCell className="flex justify-end gap-2">
                   <DialogInformationCategory id={category.id}>
