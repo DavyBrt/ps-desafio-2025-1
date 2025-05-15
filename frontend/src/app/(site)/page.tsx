@@ -22,8 +22,8 @@ import VehicleFilterByCategory from '@/components/site_PS/filter/Filtro'
 
 
 const data = [
-  {id: '1', image: '/assets/Promo_jeep.jpeg'},
-  {id: '2', image: '/assets/Promo_PCX.jpeg'},
+  {id: '1', image: '/assets/Promo_jeep.png'},
+  {id: '2', image: '/assets/Promo_PCX.png'},
 
 ]
 
@@ -91,7 +91,7 @@ export default function Home() {
           </div>
           <div className={style.wrapper}>
             {filteredVehicles?.map((vehicle, index) => (
-            <Card key={index} vehicle={vehicle}  />
+            <Card key={vehicle.id} vehicle={vehicle}  />
           ))}
           </div>
         </div>
