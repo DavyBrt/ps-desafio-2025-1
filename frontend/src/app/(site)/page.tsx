@@ -17,6 +17,7 @@ import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from "swiper/react"
 import Navbar from "@/components/site_PS/navbar/navbar"
 import Footer from "@/components/site_PS/footer/footer"
+import VehicleFilterByCategory from '@/components/site_PS/filter/Filtro'
 
 
 
@@ -29,6 +30,8 @@ const data = [
 export default function Home() {
   const [vehicles, setVehicles] = useState<vehicleType[] | undefined>()
   const {toast} = useToast()
+  const [filteredVehicles, setFilteredVehicles] = useState<vehicleType[] | undefined>()
+
 
   useEffect( ()=>{
     const requestData = async() => {
@@ -36,6 +39,7 @@ export default function Home() {
 
       if (response){
         setVehicles(response)
+        setFilteredVehicles(response)
       }else{
         toast({
           title: 'Os veículos não foram encontrados'
@@ -44,6 +48,17 @@ export default function Home() {
     }
     requestData()
   }, [toast])
+
+  const handleFilterChange = (categoryId: string) => {
+  if (!categoryId) {
+    setFilteredVehicles(vehicles)
+  } else {
+    const filtered = vehicles?.filter((v) => v.category_id === categoryId)
+    setFilteredVehicles(filtered)
+  }
+}
+
+  
   return (
     <>
       <div className={style.page}>
@@ -69,10 +84,16 @@ export default function Home() {
             ))}
           </Swiper>
         </div>
-        <div className={style.wrapper}>
-        {vehicles?.map((vehicle: vehicleType, index: number) => (
-          <Card vehicle={vehicle} key={index}/>
-        ))}
+        
+        <div>
+          <div className={style.filter_box}>
+            <VehicleFilterByCategory onFilterChange={handleFilterChange} />
+          </div>
+          <div className={style.wrapper}>
+            {filteredVehicles?.map((vehicle, index) => (
+            <Card key={index} vehicle={vehicle}  />
+          ))}
+          </div>
         </div>
         <Footer/>
       </div>

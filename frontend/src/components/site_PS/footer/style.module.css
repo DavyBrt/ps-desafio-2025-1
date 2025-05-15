@@ -17,7 +17,7 @@
     padding: 60px 70px;
     gap: 150px;
     border-top: 1.5px #2c0d0da8;
-    box-shadow: 0px 0px 3px #40010d;
+
 }
 
 .contacts {
@@ -49,7 +49,9 @@
 }
 
 .social_media>.social_link:hover {
-    color: #ff0000
+    color: #ff0000;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
 }
 
 .social_media>.social_link a {
@@ -69,7 +71,8 @@
 }
 
 .list>li>.sobre_link:hover {
-    color: #ff0000
+    color: #ff0000;
+
 }
 
 .copyright {
@@ -78,9 +81,13 @@
     font-size: 20px;
     padding: 20px;
     font-weight: 200;
-    background-color: #40010d65;
-    color: #40010d;
+    background-color: #40010da4;
+    color: #81031ae0;
     text-align: center;
+}
+
+.icons {
+    font-size: 20px;
 }
 
 @media screen and (max-width: 660px) {

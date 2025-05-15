@@ -1,7 +1,7 @@
 'use client'
 
 import style from "./style.module.css"
-import { GrInstagram } from "react-icons/gr";
+import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { AiOutlineLinkedin } from "react-icons/ai";
 
@@ -13,16 +13,16 @@ export default function Footer(){
             <div className={style.footer_content}>
                 <div className={style.contacts}>
                     <h2>A melhor empresa de veículos do mercado!</h2>
-                    <p>Compre, aqui, o veículo dos seus sonhos!</p>
+                    <p>Compre aqui o veículo dos seus sonhos!</p>
                     <div className={style.social_media}>
                         <a href="https://www.instagram.com/davy_a.b/" target="_blank" className={style.social_link} id = 'Instagram'>
-                            <GrInstagram />
+                            <AiOutlineInstagram className={style.icons} />
                         </a>
                         <a href="https://www.facebook.com/davi.dealmeidabrito.7?locale=pt_BR" target="_blank" className={style.social_link} id = 'Facebook'>
-                            <AiOutlineFacebook />
+                            <AiOutlineFacebook className={style.icons} />
                         </a>
                         <a href="https://www.linkedin.com/in/davy-brito/" target="_blank" className={style.social_link} id = 'Linkedin'>
-                            <AiOutlineLinkedin />
+                            <AiOutlineLinkedin className={style.icons} />
                         </a>
                     </div>
                 </div>

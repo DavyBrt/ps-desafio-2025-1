@@ -125,5 +125,12 @@ class VeiculoController extends Controller
     $veiculo->save();
     return response()->json($veiculo, Response::HTTP_OK);
     }
+
+    public function byCategory($categoryId): JsonResponse
+{
+    $vehicles = Vehicle::where('category_id', $categoryId)->get();
+
+    return response()->json($vehicles, Response::HTTP_OK);
+}
 }
 

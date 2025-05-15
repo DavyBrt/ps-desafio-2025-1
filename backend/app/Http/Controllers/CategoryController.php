@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Veiculo;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -83,4 +84,13 @@ class CategoryController extends Controller
 
         return response()->json(['message' => 'Categoria deletada com sucesso!', Response::HTTP_NO_CONTENT]);
     }
+
+    
+    public function byCategory($categoryId): JsonResponse
+{
+    $vehicles = Veiculo::where('category_id', $categoryId)->get();
+
+    return response()->json($vehicles, Response::HTTP_OK);
 }
+}
+

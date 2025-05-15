@@ -40,14 +40,14 @@ export default function Navbar({logo}:navBarProps){
                     <li className={style.nav_item}><a href="http://localhost:3000">Início</a>    
                     </li>
                     <li className={style.nav_item}>
-                        <a href="#">Veículos</a>
+                        <a href="https://dicionario.priberam.org/ve%C3%ADculo#google_vignette" target='_blank'>Veículos</a>
                         
                     </li>
                     <li className={style.nav_item}>
-                        <a href="#">Categorias</a>
+                        <a href="https://dicionario.priberam.org/categoria" target='_blank'>Categorias</a>
                     </li>
                     <li className={style.nav_item}>
-                        <FaUser/>
+                        <FaUser className={style.user_logo}/>
                         <a href="/admin" className={style.icon_button}>
                             {isAuth ? 'Logado' : 'Logar'}
                         </a>

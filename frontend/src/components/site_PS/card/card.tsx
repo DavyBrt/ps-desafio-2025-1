@@ -19,8 +19,7 @@ export default function Card({ vehicle }: vehicleProp) {
     setLoading(true)
     try {
       const res = await buyVehicle(String(vehicle.id))
-      const data = JSON.parse(res)
-      alert(res)
+      const data = JSON.parse(res).response
 
       if (data.storage !== undefined) {
         setStorage(data.storage)
@@ -49,6 +48,7 @@ export default function Card({ vehicle }: vehicleProp) {
           className={style.buy_button}
         >
           {storage === 0 ? 'Esgotado' : loading ? 'Comprando...' : 'Comprar'}
+          
         </button>
       </div>
     </div>

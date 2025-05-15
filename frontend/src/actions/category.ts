@@ -39,3 +39,14 @@ export async function destroyCategory(id: string) {
 
     return JSON.stringify(res)
 }
+
+export async function showCategory(id: string) {
+
+    const res = await api('GET', `/categories/${id}`)
+
+    if (!res.error) {
+        revalidatePath('#')
+    }
+
+    return JSON.stringify(res)
+}

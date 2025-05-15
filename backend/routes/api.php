@@ -28,7 +28,7 @@ Route::get('/vehicles/{id}', [VeiculoController::class, 'show']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{id}', [CategoryController::class, 'show']);
 
-
+Route::get('/vehicles/by-category/{categoryId}', [VeiculoController::class, 'byCategory']);
 Route::post('/vehicles/{id}/buy', [VeiculoController::class, 'buy']);
 
 Route::get('/', function () {

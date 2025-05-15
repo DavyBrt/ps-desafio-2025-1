@@ -25,6 +25,10 @@
     transition: all 0.5s ease;
 }
 
+.filter_box {
+    margin-top: 2rem;
+
+}
 
 
 .container {
@@ -34,7 +38,6 @@
     max-width: 100%;
     margin: 0 auto;
     box-shadow: 0 0 10px 5px rgba(99, 37, 37, 0.4);
-    border-radius: 8px;
     position: relative;
 
 
@@ -43,9 +46,11 @@
 
 .slide_item {
     width: 100%;
-    height: 100%;
-    border-radius: 12px;
+    height: 50%;
     object-fit: cover;
+    object-fit: contain;
+    object-position: center;
+
 
 
 }
